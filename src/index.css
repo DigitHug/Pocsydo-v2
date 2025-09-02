@@ -61,6 +61,9 @@ Tous les couleurs DOIVENT être en HSL.
 
     --success: 142 70% 50%;
     --success-foreground: 0 0% 98%;
+    
+    --success-soft: 142 40% 70%;
+    --success-soft-foreground: 142 60% 20%;
 
     --warning: 38 90% 55%;
     --warning-foreground: 0 0% 98%;

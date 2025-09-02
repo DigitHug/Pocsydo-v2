@@ -100,10 +100,15 @@ const Projets = () => {
           <h1 className="text-3xl font-bold text-foreground">Projets</h1>
           <p className="text-muted-foreground">Gestion et suivi de tous vos projets</p>
         </div>
-        <Button className="gap-2 bg-gradient-violet border-0 hover:opacity-90">
-          <Plus className="w-4 h-4" />
-          Nouveau Projet
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button className="gap-2 bg-gradient-violet border-0 hover:opacity-90">
+            <Plus className="w-4 h-4" />
+            Nouveau Projet
+          </Button>
+          <Button className="gap-2 bg-gradient-coral text-white border-0 hover:opacity-90">
+            Edition Datasheet
+          </Button>
+        </div>
       </div>
 
       {/* Filters & Search */}

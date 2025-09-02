@@ -65,7 +65,7 @@ export function AppSidebar() {
           {!collapsed && (
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
-                <img src="/lovable-uploads/45fafc0e-fd08-419f-a2a5-5ada300bce10.png" alt="SydoFlow Logo" className="w-6 h-6" />
+                <img src="/lovable-uploads/45fafc0e-fd08-419f-a2a5-5ada300bce10.png" alt="SydoFlow Logo" className="h-full w-auto object-contain" />
               </div>
               <div>
                 <h2 className="text-sm font-semibold text-foreground">SydoFlow</h2>

@@ -1,8 +1,10 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "./AppSidebar"
-import { Bell, Search, User } from "lucide-react"
+import { Bell, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import matthieuAvatar from "@/assets/matthieu-avatar.png"
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -39,9 +41,12 @@ export function AppLayout({ children }: AppLayoutProps) {
                   <p className="text-sm font-medium">Mathieu</p>
                   <p className="text-xs text-muted-foreground">Chef de projet</p>
                 </div>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <User className="w-4 h-4" />
-                </Button>
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src={matthieuAvatar} alt="Avatar de Mathieu" />
+                  <AvatarFallback className="bg-gradient-cyan text-white font-semibold">
+                    MT
+                  </AvatarFallback>
+                </Avatar>
               </div>
             </div>
           </header>

@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppLayout } from "@/components/layout/AppLayout";
-import Dashboard from "./pages/Dashboard";
+import DashFlow from "./pages/DashFlow";
 import Projets from "./pages/Projets";
 import Pipeline from "./pages/Pipeline";
 import Equipe from "./pages/Equipe";
@@ -21,7 +21,7 @@ const App = () => (
       <BrowserRouter>
         <AppLayout>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<DashFlow />} />
             <Route path="/projets" element={<Projets />} />
             <Route path="/pipeline" element={<Pipeline />} />
             <Route path="/equipe" element={<Equipe />} />

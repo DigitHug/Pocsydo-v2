@@ -72,7 +72,7 @@ const mockEvents: Record<string, WorkEvent[]> = {
   // Semaine 3
   "2025-01-20": [
     { id: "22", title: "Réunion équipe design", time: "10:00", type: "meeting", priority: "medium" },
-    { id: "23", title: "Implémentation dashboard", time: "14:00", type: "task", priority: "high" },
+    { id: "23", title: "Implémentation DashFlow", time: "14:00", type: "task", priority: "high" },
   ],
   "2025-01-21": [
     { id: "24", title: "Formation Supabase", time: "09:00", type: "meeting", priority: "low" },

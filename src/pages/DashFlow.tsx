@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
-const Dashboard = () => {
+const DashFlow = () => {
   const kpiData = [
     {
       title: "Prospects",
@@ -93,7 +93,7 @@ const Dashboard = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-foreground">DashFlow</h1>
           <p className="text-muted-foreground">Vue d'ensemble de vos projets et performances</p>
         </div>
         <div className="flex gap-3">
@@ -212,4 +212,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashFlow

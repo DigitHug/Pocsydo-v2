@@ -5,6 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import sarahAvatar from "@/assets/sarah-martin-avatar.png"
+import mathieuAvatar from "@/assets/mathieu-avatar.png"
 import { 
   MessageCircle, 
   Send, 
@@ -40,7 +41,8 @@ export function DiscordChatBot() {
     },
     {
       id: 2,
-      user: "Omar Faruk",
+      user: "Mathieu",
+      avatar: mathieuAvatar,
       message: "Parfait ! J'ai vu que le client a validé la maquette",
       timestamp: "14:35",
       isCurrentUser: true

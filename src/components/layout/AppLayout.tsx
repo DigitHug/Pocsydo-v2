@@ -36,7 +36,7 @@ export function AppLayout({ children }: AppLayoutProps) {
               
               <div className="flex items-center gap-2 pl-3 border-l border-border/50">
                 <div className="text-right">
-                  <p className="text-sm font-medium">Omar Faruk</p>
+                  <p className="text-sm font-medium">Mathieu</p>
                   <p className="text-xs text-muted-foreground">Chef de projet</p>
                 </div>
                 <Button variant="ghost" size="icon" className="rounded-full">

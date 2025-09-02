@@ -78,7 +78,7 @@ export function DiscordChatBot() {
   }
 
   return (
-    <Card className="shadow-card bg-gradient-card border-border/50">
+    <Card className="shadow-hover bg-gradient-primary border-primary/20 hover:shadow-glow transition-all duration-300 ring-1 ring-primary/10">
       <div className="p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">

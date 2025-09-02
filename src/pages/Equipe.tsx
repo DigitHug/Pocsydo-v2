@@ -320,31 +320,31 @@ const Equipe = () => {
               </div>
 
               {/* Actions */}
-              <div className="grid grid-cols-2 gap-2">
-                <Button variant="outline" size="sm">
-                  <MessageCircle className="w-4 h-4 mr-2" />
+              <div className="grid grid-cols-2 gap-1">
+                <Button variant="outline" size="sm" className="text-xs px-2 py-1 h-8">
+                  <MessageCircle className="w-3 h-3 mr-1" />
                   Contact
                 </Button>
-                <Button variant="outline" size="sm">
-                  <Calendar className="w-4 h-4 mr-2" />
+                <Button variant="outline" size="sm" className="text-xs px-2 py-1 h-8">
+                  <Calendar className="w-3 h-3 mr-1" />
                   Planning
                 </Button>
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="border-coral text-coral hover:bg-coral hover:text-white"
+                  className="text-xs px-2 py-1 h-8 border-coral text-coral hover:bg-coral hover:text-white"
                   onClick={() => window.open(`mailto:${membre.email}`, '_blank')}
                 >
-                  <Mail className="w-4 h-4 mr-2" />
-                  Open Email
+                  <Mail className="w-3 h-3 mr-1" />
+                  Email
                 </Button>
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="border-violet text-violet hover:bg-violet hover:text-white"
+                  className="text-xs px-2 py-1 h-8 border-violet text-violet hover:bg-violet hover:text-white"
                 >
-                  <PhoneCall className="w-4 h-4 mr-2" />
-                  Call Discord
+                  <PhoneCall className="w-3 h-3 mr-1" />
+                  Discord
                 </Button>
               </div>
             </div>

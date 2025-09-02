@@ -1,7 +1,15 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import youriAvatar from "@/assets/youri-avatar.png"
+import matthieuAvatar from "@/assets/matthieu-avatar.png"
+import sylvainAvatar from "@/assets/sylvain-avatar.png"
+import antonyAvatar from "@/assets/antony-avatar.png"
+import carolineAvatar from "@/assets/caroline-avatar.png"
+import alexandreAvatar from "@/assets/alexandre-avatar.png"
+import leaAvatar from "@/assets/lea-avatar.png"
+import thomasAvatar from "@/assets/thomas-avatar.png"
 import { 
   User,
   Mail,
@@ -16,6 +24,20 @@ import {
 } from "lucide-react"
 
 const Equipe = () => {
+  const getAvatarByName = (prenom: string) => {
+    const avatars: Record<string, string> = {
+      "Youri": youriAvatar,
+      "Matthieu": matthieuAvatar,
+      "Sylvain": sylvainAvatar,
+      "Antony": antonyAvatar,
+      "Caroline": carolineAvatar,
+      "Alexandre": alexandreAvatar,
+      "Léa": leaAvatar,
+      "Thomas": thomasAvatar
+    }
+    return avatars[prenom]
+  }
+
   const membres = [
     {
       id: 1,
@@ -228,6 +250,7 @@ const Equipe = () => {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <Avatar className="h-12 w-12">
+                    <AvatarImage src={getAvatarByName(membre.prenom)} alt={`Avatar de ${membre.prenom}`} />
                     <AvatarFallback className={`bg-gradient-${membre.couleur} text-white font-semibold`}>
                       {membre.initiales}
                     </AvatarFallback>

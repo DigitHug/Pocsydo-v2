@@ -60,7 +60,7 @@ const Equipe = () => {
       prenom: "Mathieu", 
       role: "UI/UX Designer",
       specialite: "Design System",
-      email: "matthieu@sydoflow.com",
+      email: "mathieu@sydoflow.com",
       telephone: "+33 6 23 45 67 89",
       statut: "En projet",
       charge: 90,

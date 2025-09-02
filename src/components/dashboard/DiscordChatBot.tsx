@@ -9,7 +9,7 @@ import {
   Send, 
   Paperclip, 
   Smile,
-  Hash,
+  MessageSquare,
   Users,
   Settings,
   Phone,
@@ -81,8 +81,8 @@ export function DiscordChatBot() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <Hash className="w-4 h-4 text-muted-foreground" />
-              <h2 className="text-xl font-semibold">équipe-projets</h2>
+              <MessageSquare className="w-4 h-4 text-muted-foreground" />
+              <h2 className="text-xl font-semibold">TeamChat & Assit</h2>
             </div>
             <Badge className="bg-success/10 text-success border-success/20 text-xs">
               <div className="w-2 h-2 bg-success rounded-full mr-1"></div>
@@ -158,7 +158,7 @@ export function DiscordChatBot() {
           </Button>
           
           <Input
-            placeholder="Envoyer un message à #équipe-projets"
+            placeholder="Envoyer un message à #TeamChat & Assit"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}

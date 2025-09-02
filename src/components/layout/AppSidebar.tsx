@@ -64,11 +64,11 @@ export function AppSidebar() {
         <div className="p-4 border-b border-border/50">
           {!collapsed && (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-coral flex items-center justify-center">
-                <BarChart3 className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
+                <img src="/lovable-uploads/45fafc0e-fd08-419f-a2a5-5ada300bce10.png" alt="SydoFlow Logo" className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-foreground">ProjectFlow</h2>
+                <h2 className="text-sm font-semibold text-foreground">SydoFlow</h2>
                 <p className="text-xs text-muted-foreground">Gestion de projets</p>
               </div>
             </div>

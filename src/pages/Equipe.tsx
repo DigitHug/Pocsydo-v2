@@ -20,7 +20,8 @@ import {
   Star,
   Plus,
   MessageCircle,
-  Settings
+  Settings,
+  PhoneCall
 } from "lucide-react"
 
 const Equipe = () => {
@@ -319,23 +320,31 @@ const Equipe = () => {
               </div>
 
               {/* Actions */}
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="flex-1">
+              <div className="grid grid-cols-2 gap-2">
+                <Button variant="outline" size="sm">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Contact
                 </Button>
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button variant="outline" size="sm">
                   <Calendar className="w-4 h-4 mr-2" />
                   Planning
                 </Button>
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="flex-1 border-coral text-coral hover:bg-coral hover:text-white"
+                  className="border-coral text-coral hover:bg-coral hover:text-white"
                   onClick={() => window.open(`mailto:${membre.email}`, '_blank')}
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   Open Email
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="border-violet text-violet hover:bg-violet hover:text-white"
+                >
+                  <PhoneCall className="w-4 h-4 mr-2" />
+                  Call Discord
                 </Button>
               </div>
             </div>

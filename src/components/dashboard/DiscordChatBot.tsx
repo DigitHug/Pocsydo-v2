@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
+import sarahAvatar from "@/assets/sarah-martin-avatar.png"
 import { 
   MessageCircle, 
   Send, 
@@ -47,7 +48,7 @@ export function DiscordChatBot() {
     {
       id: 3,
       user: "Sarah Martin",
-      avatar: "/placeholder.svg",
+      avatar: sarahAvatar,
       message: "Super ! On peut commencer le développement demain",
       timestamp: "14:37"
     },
@@ -81,7 +82,7 @@ export function DiscordChatBot() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <MessageSquare className="w-4 h-4 text-muted-foreground" />
+              <img src="/lovable-uploads/4bdf507d-2a67-4ab7-8251-4948fd72d66c.png" alt="Discord" className="w-4 h-4" />
               <h2 className="text-xl font-semibold">TeamChat & Assit</h2>
             </div>
             <Badge className="bg-success/10 text-success border-success/20 text-xs">

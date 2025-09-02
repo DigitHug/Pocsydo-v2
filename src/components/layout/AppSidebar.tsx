@@ -5,10 +5,7 @@ import {
   Users, 
   FolderOpen, 
   TrendingUp,
-  Settings,
-  PieChart,
-  Target,
-  Clock
+  Settings
 } from "lucide-react"
 import { NavLink, useLocation } from "react-router-dom"
 
@@ -33,11 +30,6 @@ const mainItems = [
   { title: "Calendrier", url: "/calendrier", icon: Calendar },
 ]
 
-const analysisItems = [
-  { title: "Analytics", url: "/analytics", icon: PieChart },
-  { title: "Objectifs", url: "/objectifs", icon: Target },
-  { title: "Planning", url: "/planning", icon: Clock },
-]
 
 export function AppSidebar() {
   const { state } = useSidebar()
@@ -59,7 +51,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar className={collapsed ? "w-16" : "w-64"}>
-      <SidebarContent className="bg-gradient-subtle border-r border-border/50">
+      <SidebarContent className="bg-muted/30 border-r border-border/50">
         {/* Header */}
         <div className="p-4 border-b border-border/50">
           {!collapsed && (
@@ -100,29 +92,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Analyse et reporting */}
-        <SidebarGroup>
-          <SidebarGroupLabel className={collapsed ? "sr-only" : ""}>
-            Analyse
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {analysisItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="h-10">
-                    <NavLink 
-                      to={item.url}
-                      className={getNavClass(item.url)}
-                    >
-                      <item.icon className="w-4 h-4" />
-                      {!collapsed && <span className="ml-3">{item.title}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
 
         {/* Settings */}
         <div className="mt-auto p-4 border-t border-border/50">

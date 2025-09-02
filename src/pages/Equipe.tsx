@@ -328,6 +328,15 @@ const Equipe = () => {
                   <Calendar className="w-4 h-4 mr-2" />
                   Planning
                 </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1 border-coral text-coral hover:bg-coral hover:text-white"
+                  onClick={() => window.open(`mailto:${membre.email}`, '_blank')}
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  Open Email
+                </Button>
               </div>
             </div>
           </Card>

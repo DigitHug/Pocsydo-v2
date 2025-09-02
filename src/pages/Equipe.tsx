@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import youriAvatar from "@/assets/youri-avatar.png"
-import matthieuAvatar from "@/assets/matthieu-avatar.png"
+import mathieuAvatar from "@/assets/mathieu-avatar.png"
 import sylvainAvatar from "@/assets/sylvain-avatar.png"
 import antonyAvatar from "@/assets/antony-avatar.png"
 import carolineAvatar from "@/assets/caroline-avatar.png"
@@ -27,7 +27,7 @@ const Equipe = () => {
   const getAvatarByName = (prenom: string) => {
     const avatars: Record<string, string> = {
       "Youri": youriAvatar,
-      "Matthieu": matthieuAvatar,
+      "Mathieu": mathieuAvatar,
       "Sylvain": sylvainAvatar,
       "Antony": antonyAvatar,
       "Caroline": carolineAvatar,
@@ -56,8 +56,8 @@ const Equipe = () => {
     },
     {
       id: 2,
-      nom: "Matthieu",
-      prenom: "Matthieu", 
+      nom: "Mathieu",
+      prenom: "Mathieu", 
       role: "UI/UX Designer",
       specialite: "Design System",
       email: "matthieu@sydoflow.com",

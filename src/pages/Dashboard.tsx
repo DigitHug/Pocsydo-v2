@@ -1,4 +1,5 @@
 import { KpiCard } from "@/components/dashboard/KpiCard"
+import { DiscordChatBot } from "@/components/dashboard/DiscordChatBot"
 import { Card } from "@/components/ui/card"
 import { 
   Users, 
@@ -113,6 +114,9 @@ const Dashboard = () => {
           <KpiCard key={index} {...kpi} />
         ))}
       </div>
+
+      {/* Discord Chat Bot */}
+      <DiscordChatBot />
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

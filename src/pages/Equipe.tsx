@@ -196,7 +196,7 @@ const Equipe = () => {
             <p className="text-sm opacity-90">Membres Total</p>
           </div>
         </Card>
-        <Card className="p-4 bg-success-soft text-success-soft-foreground border-0">
+        <Card className="p-4 bg-success/10 text-success border-success/20">
           <div className="text-center">
             <Star className="w-6 h-6 mx-auto mb-2" />
             <p className="text-2xl font-bold">{statsEquipe.disponibles}</p>

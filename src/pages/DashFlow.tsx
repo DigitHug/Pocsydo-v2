@@ -83,9 +83,12 @@ const DashFlow = () => {
     ? kpiDataFromSheets.map((kpi, index) => ({
         ...kpi,
         icon: [Users, FolderOpen, TrendingUp, Euro][index] || Users,
-        variant: (["coral", "violet", "cyan", "navy"][index] || "coral") as const,
+        variant: (["coral", "violet", "cyan", "navy"][index] || "coral") as "coral" | "violet" | "cyan" | "navy",
       }))
-    : kpiDataFallback;
+    : kpiDataFallback.map((kpi, index) => ({
+        ...kpi,
+        variant: (["coral", "violet", "cyan", "navy"][index] || "coral") as "coral" | "violet" | "cyan" | "navy",
+      }));
 
   const recentProjects = [
     { id: 1, name: "Refonte Site Web Luxe", client: "Maison Martin", status: "En cours", priority: "Haute", deadline: "15 Jan" },

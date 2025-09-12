@@ -4,8 +4,24 @@ import { hybridChatbotService, HybridResponse } from '@/services/HybridChatbotSe
 import { csvUploadService, CSVUploadResult } from '@/services/CSVUploadService';
 import { friendlyChatbotService } from '@/services/FriendlyChatbotService';
 
+interface Message {
+  id: number;
+  type: string;
+  content: string;
+  timestamp: string;
+  isBot?: boolean;
+  botName?: string;
+  botAvatar?: string;
+  author?: string;
+  avatar?: string;
+  isCurrentUser?: boolean;
+  responseType?: string;
+  suggestions?: string[];
+  isLLMGenerated?: boolean;
+}
+
 const DiscordChatbot = ({ onClose }: { onClose?: () => void }) => {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       type: 'system',

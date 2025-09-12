@@ -1,73 +1,161 @@
-# Welcome to your Lovable project
+# 🚀 SydoFlow - Dashboard de Gestion de Projets avec IA
 
-## Project info
+Un dashboard moderne de gestion de projets et d'équipes, intégrant un assistant IA intelligent avec support LLM local via Ollama.
 
-**URL**: https://lovable.dev/projects/1f52f22e-ab75-4e56-b036-afc3ad47b063
+## ✨ Fonctionnalités
 
-## How can I edit this code?
+### 🎯 **Dashboard Principal**
+- **Vue d'ensemble** des projets et équipe
+- **KPIs** en temps réel
+- **Graphiques** interactifs avec Recharts
+- **Interface moderne** avec Shadcn/ui
 
-There are several ways of editing your application.
+### 🤖 **Assistant IA Intelligent**
+- **Chat Discord-like** intégré
+- **Analyse intelligente** des données de projets
+- **Suggestions** basées sur l'IA
+- **Support LLM local** via Ollama (llama3.2:3b)
+- **Mode hybride** : données CSV + enrichissement IA
 
-**Use Lovable**
+### 📊 **Gestion des Données**
+- **Import CSV** pour projets et équipe
+- **Analyse automatique** des échéances
+- **Détection d'alertes** et priorités
+- **Export** vers Google Sheets (préparé)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1f52f22e-ab75-4e56-b036-afc3ad47b063) and start prompting.
+### 👥 **Gestion d'Équipe**
+- **Profils** avec avatars
+- **Statuts** de disponibilité
+- **Spécialités** et compétences
+- **Charge de travail** par membre
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Technologies
 
-**Use your preferred IDE**
+- **Frontend** : React 18 + TypeScript + Vite
+- **UI** : Shadcn/ui + Tailwind CSS
+- **Routing** : React Router DOM
+- **État** : TanStack Query
+- **IA** : Ollama (LLM local)
+- **Données** : CSV + Google Sheets API
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prérequis
+- Node.js 18+
+- npm ou yarn
+- Ollama (pour l'IA)
 
-Follow these steps:
+### 1. Cloner le projet
+```bash
+git clone https://github.com/VOTRE-USERNAME/sydoflow.git
+cd sydoflow
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 2. Installer les dépendances
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 3. Installer et configurer Ollama (optionnel)
+```bash
+# Installation automatique
+npm run setup-ollama
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Ou installation manuelle
+curl -fsSL https://ollama.com/install.sh | sh
+ollama serve
+ollama pull llama3.2:3b
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 4. Démarrer l'application
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+L'application sera accessible sur `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Structure du Projet
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/          # Composants React
+│   ├── dashboard/      # Composants du dashboard
+│   ├── layout/         # Layout et navigation
+│   └── ui/            # Composants UI (Shadcn)
+├── pages/             # Pages principales
+├── services/          # Services métier
+│   ├── OllamaService.ts      # Communication LLM
+│   ├── HybridChatbotService.ts # Intelligence hybride
+│   ├── FriendlyChatbotService.ts # Réponses conviviales
+│   └── DataService.ts        # Gestion des données
+├── config/            # Configuration
+└── assets/            # Images et ressources
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🤖 Assistant IA
 
-## What technologies are used for this project?
+### Commandes disponibles
+- `"aide"` - Liste des commandes
+- `"projets"` - État des projets
+- `"équipe"` - État de l'équipe
+- `"deadlines"` - Échéances critiques
+- `"actualiser"` - Recharger les données
+- `"llm"` - Statut de l'IA
 
-This project is built with:
+### Fonctionnalités IA
+- **Analyse contextuelle** des projets
+- **Suggestions intelligentes** d'actions
+- **Détection d'alertes** automatique
+- **Réponses enrichies** par LLM local
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📊 Données d'Exemple
 
-## How can I deploy this project?
+Le projet inclut des données d'exemple dans `public/data/` :
+- `projets.csv` - 6 projets avec statuts et échéances
+- `equipe.csv` - 10 membres d'équipe avec spécialités
 
-Simply open [Lovable](https://lovable.dev/projects/1f52f22e-ab75-4e56-b036-afc3ad47b063) and click on Share -> Publish.
+## 🔧 Scripts Disponibles
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+npm run dev              # Démarrage développement
+npm run build            # Build production
+npm run preview          # Aperçu build
+npm run setup-ollama     # Installation Ollama
+npm run start-ollama     # Démarrage Ollama
+npm run test-ollama      # Test LLM
+```
 
-Yes, you can!
+## 📚 Documentation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- [Guide d'installation Ollama](OLLAMA_SETUP.md)
+- [Configuration Google Sheets](GOOGLE_SHEETS_SETUP.md)
+- [Configuration environnement](ENV_CONFIG.md)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🎯 Fonctionnalités Futures
+
+- [ ] Intégration Google Sheets complète
+- [ ] Notifications en temps réel
+- [ ] Export PDF des rapports
+- [ ] API REST pour intégrations
+- [ ] Mode sombre/clair
+- [ ] Multi-langues
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 👨‍💻 Auteur
+
+**Hugues Perrin** - [@DigitHug](https://github.com/DigitHug)
+
+---
+
+⭐ **N'hésitez pas à donner une étoile si ce projet vous plaît !**

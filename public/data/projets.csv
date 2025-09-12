@@ -1,0 +1,8 @@
+id,nom,client,statut,priorite,deadline,responsable,progression,description
+1,Refonte Site Web Luxe,Maison Martin,En cours,Haute,2024-01-15,Sarah Martin,75,Refonte complète du site e-commerce avec nouveau design
+2,App Mobile E-commerce,TechStart,Review,Moyenne,2024-01-20,Tom Chen,60,Développement d'une application mobile pour la vente en ligne
+3,Plateforme SaaS,InnovateCorp,Planifié,Basse,2024-01-28,Emma Wilson,25,Création d'une plateforme SaaS pour la gestion d'équipe
+4,Audit SEO,Digital Plus,En cours,Haute,2024-01-10,Alexandre Dubois,90,Audit complet et optimisation SEO du site existant
+5,Présentation Design,Creative Lab,En cours,Moyenne,2024-01-12,Caroline Petit,85,Préparation de la présentation design pour le client
+6,Livrable Final,Global Tech,En cours,Haute,2024-01-08,Matthieu Leroy,95,Finalisation et livraison du projet de migration
+

@@ -1,5 +1,4 @@
 import { KpiCard } from "@/components/dashboard/KpiCard"
-import { DiscordChatBot } from "@/components/dashboard/DiscordChatBot"
 import DiscordChatbot from "@/components/DiscordChatbot"
 import { Card } from "@/components/ui/card"
 import { 
@@ -10,40 +9,14 @@ import {
   Calendar,
   Clock,
   Target,
-  AlertTriangle,
-  RefreshCw,
-  Settings,
-  CheckCircle
+  AlertTriangle
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { useKpis } from "@/hooks/useGoogleSheets"
-import GoogleSheetsConfig from "@/components/GoogleSheetsConfig"
-import { useState, useEffect } from "react"
 
 const DashFlow = () => {
-  const [spreadsheetId, setSpreadsheetId] = useState<string>('');
-  const [showConfig, setShowConfig] = useState(false);
-
-  // Charger l'ID depuis le localStorage
-  useEffect(() => {
-    const savedId = localStorage.getItem('googleSheetsId');
-    if (savedId) {
-      setSpreadsheetId(savedId);
-    }
-  }, []);
-
-  // Utiliser le hook Google Sheets si un ID est configuré
-  const { 
-    kpiData: kpiDataFromSheets, 
-    isLoading, 
-    error, 
-    saveKpis, 
-    syncData 
-  } = useKpis(spreadsheetId);
-
-  // Données de fallback si Google Sheets n'est pas configuré
-  const kpiDataFallback = [
+  
+  const kpiData = [
     {
       title: "Prospects",
       value: "47",
@@ -76,16 +49,7 @@ const DashFlow = () => {
       variant: "navy" as const,
       trend: { value: 15, isPositive: true }
     },
-  ];
-
-  // Utiliser les données de Google Sheets si disponibles, sinon les données de fallback
-  const kpiData = spreadsheetId && kpiDataFromSheets.length > 0 
-    ? kpiDataFromSheets.map((kpi, index) => ({
-        ...kpi,
-        icon: [Users, FolderOpen, TrendingUp, Euro][index] || Users,
-        variant: (["coral", "violet", "cyan", "navy"][index] || "coral") as const,
-      }))
-    : kpiDataFallback;
+  ]
 
   const recentProjects = [
     { id: 1, name: "Refonte Site Web Luxe", client: "Maison Martin", status: "En cours", priority: "Haute", deadline: "15 Jan" },
@@ -127,35 +91,14 @@ const DashFlow = () => {
 
   return (
     <>
-      
       <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">DashFlow</h1>
           <p className="text-muted-foreground">Vue d'ensemble de vos projets et performances</p>
-          {spreadsheetId && (
-            <div className="flex items-center gap-2 mt-2">
-              <Badge className="bg-success/10 text-success border-success/20">
-                <CheckCircle className="w-3 h-3 mr-1" />
-                Synchronisé avec Google Sheets
-              </Badge>
-              {isLoading && (
-                <Badge variant="secondary">
-                  <RefreshCw className="w-3 h-3 mr-1 animate-spin" />
-                  Synchronisation...
-                </Badge>
-              )}
-              {error && (
-                <Badge className="bg-destructive/10 text-destructive border-destructive/20">
-                  <AlertTriangle className="w-3 h-3 mr-1" />
-                  Erreur de sync
-                </Badge>
-              )}
-            </div>
-          )}
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <Button variant="outline" className="gap-2">
             <Calendar className="w-4 h-4" />
             Planifier
@@ -164,33 +107,8 @@ const DashFlow = () => {
             <Target className="w-4 h-4" />
             Nouveau Projet
           </Button>
-          <Button 
-            variant="outline" 
-            size="icon"
-            onClick={syncData}
-            disabled={isLoading || !spreadsheetId}
-          >
-            <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="icon"
-            onClick={() => setShowConfig(!showConfig)}
-          >
-            <Settings className="w-4 h-4" />
-          </Button>
         </div>
       </div>
-
-      {/* Configuration Google Sheets */}
-      {showConfig && (
-        <GoogleSheetsConfig 
-          onConfigChange={(id) => {
-            setSpreadsheetId(id);
-            setShowConfig(false);
-          }}
-        />
-      )}
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

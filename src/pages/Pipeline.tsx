@@ -10,11 +10,38 @@ import {
   Users,
   ArrowRight,
   Clock,
-  CheckCircle
+  CheckCircle,
+  RefreshCw,
+  Settings,
+  AlertCircle
 } from "lucide-react"
+import { usePipeline } from "@/hooks/useGoogleSheets"
+import GoogleSheetsConfig from "@/components/GoogleSheetsConfig"
+import { useState, useEffect } from "react"
 
 const Pipeline = () => {
-  const pipelineData = {
+  const [spreadsheetId, setSpreadsheetId] = useState<string>('');
+  const [showConfig, setShowConfig] = useState(false);
+
+  // Charger l'ID depuis le localStorage
+  useEffect(() => {
+    const savedId = localStorage.getItem('googleSheetsId');
+    if (savedId) {
+      setSpreadsheetId(savedId);
+    }
+  }, []);
+
+  // Utiliser le hook Google Sheets si un ID est configuré
+  const { 
+    pipelineData: pipelineDataFromSheets, 
+    isLoading, 
+    error, 
+    savePipelineItem, 
+    syncData 
+  } = usePipeline(spreadsheetId);
+
+  // Données de fallback si Google Sheets n'est pas configuré
+  const pipelineDataFallback = {
     "Prospection": [
       {
         id: 1,
@@ -115,7 +142,12 @@ const Pipeline = () => {
         couleur: "success"
       }
     ]
-  }
+  };
+
+  // Utiliser les données de Google Sheets si disponibles, sinon les données de fallback
+  const pipelineData = spreadsheetId && Object.keys(pipelineDataFromSheets).length > 0 
+    ? pipelineDataFromSheets 
+    : pipelineDataFallback;
 
   const getProbabilityColor = (probabilite: number) => {
     if (probabilite >= 80) return "text-success"
@@ -147,12 +179,62 @@ const Pipeline = () => {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Pipeline Commercial</h1>
           <p className="text-muted-foreground">Suivi des opportunités et du processus commercial</p>
+          {spreadsheetId && (
+            <div className="flex items-center gap-2 mt-2">
+              <Badge className="bg-success/10 text-success border-success/20">
+                <CheckCircle className="w-3 h-3 mr-1" />
+                Synchronisé avec Google Sheets
+              </Badge>
+              {isLoading && (
+                <Badge variant="secondary">
+                  <RefreshCw className="w-3 h-3 mr-1 animate-spin" />
+                  Synchronisation...
+                </Badge>
+              )}
+              {error && (
+                <Badge className="bg-destructive/10 text-destructive border-destructive/20">
+                  <AlertCircle className="w-3 h-3 mr-1" />
+                  Erreur de sync
+                </Badge>
+              )}
+            </div>
+          )}
         </div>
-        <Button className="gap-2 bg-gradient-violet border-0 hover:opacity-90">
-          <FileText className="w-4 h-4" />
-          Nouvelle Opportunité
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            className="gap-2 bg-gradient-violet border-0 hover:opacity-90"
+            onClick={() => {/* TODO: Implémenter la création d'opportunité */}}
+          >
+            <FileText className="w-4 h-4" />
+            Nouvelle Opportunité
+          </Button>
+          <Button 
+            variant="outline" 
+            size="icon"
+            onClick={syncData}
+            disabled={isLoading || !spreadsheetId}
+          >
+            <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+          </Button>
+          <Button 
+            variant="outline" 
+            size="icon"
+            onClick={() => setShowConfig(!showConfig)}
+          >
+            <Settings className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
+
+      {/* Configuration Google Sheets */}
+      {showConfig && (
+        <GoogleSheetsConfig 
+          onConfigChange={(id) => {
+            setSpreadsheetId(id);
+            setShowConfig(false);
+          }}
+        />
+      )}
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

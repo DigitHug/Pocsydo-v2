@@ -3,11 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AppLayout } from "@/components/layout/AppLayout.simple";
-import DashFlow from "./pages/DashFlow.simple";
+import { AppLayout } from "@/components/layout/AppLayout";
+import DashFlow from "./pages/DashFlow";
 import Projets from "./pages/Projets.simple";
-import Pipeline from "./pages/Pipeline.simple";
-import Equipe from "./pages/Equipe.simple";
+import Pipeline from "./pages/Pipeline";
+import Equipe from "./pages/Equipe";
 import Calendrier from "./pages/Calendrier";
 import NotFound from "./pages/NotFound";
 

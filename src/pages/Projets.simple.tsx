@@ -9,40 +9,15 @@ import {
   Calendar,
   Users,
   Euro,
-  MoreVertical,
-  RefreshCw,
-  Settings,
-  AlertCircle,
-  CheckCircle
+  MoreVertical
 } from "lucide-react"
-import { useProjets } from "@/hooks/useGoogleSheets"
-import GoogleSheetsConfig from "@/components/GoogleSheetsConfig"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const Projets = () => {
-  const [spreadsheetId, setSpreadsheetId] = useState<string>('');
-  const [showConfig, setShowConfig] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Charger l'ID depuis le localStorage
-  useEffect(() => {
-    const savedId = localStorage.getItem('googleSheetsId');
-    if (savedId) {
-      setSpreadsheetId(savedId);
-    }
-  }, []);
-
-  // Utiliser le hook Google Sheets si un ID est configuré
-  const { 
-    projets: projetsFromSheets, 
-    isLoading, 
-    error, 
-    saveProjet, 
-    syncData 
-  } = useProjets(spreadsheetId);
-
-  // Données de fallback si Google Sheets n'est pas configuré (basé sur le CSV)
-  const projetsFallback = [
+  // Données de fallback basées sur le CSV
+  const projets = [
     {
       id: 1,
       nom: "Refonte Site Web Luxe",
@@ -111,9 +86,6 @@ const Projets = () => {
     }
   ];
 
-  // Utiliser les données de Google Sheets si disponibles, sinon les données de fallback
-  const projets = spreadsheetId && projetsFromSheets.length > 0 ? projetsFromSheets : projetsFallback;
-
   // Filtrer les projets selon le terme de recherche
   const filteredProjets = projets.filter(projet =>
     projet.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -155,56 +127,13 @@ const Projets = () => {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Projets</h1>
           <p className="text-muted-foreground">Gestion et suivi de tous vos projets</p>
-          {spreadsheetId && (
-            <div className="flex items-center gap-2 mt-2">
-              <Badge className="bg-success/10 text-success border-success/20">
-                <CheckCircle className="w-3 h-3 mr-1" />
-                Synchronisé avec Google Sheets
-              </Badge>
-              {isLoading && (
-                <Badge variant="secondary">
-                  <RefreshCw className="w-3 h-3 mr-1 animate-spin" />
-                  Synchronisation...
-                </Badge>
-              )}
-              {error && (
-                <Badge className="bg-destructive/10 text-destructive border-destructive/20">
-                  <AlertCircle className="w-3 h-3 mr-1" />
-                  Erreur de sync
-                </Badge>
-              )}
-            </div>
-          )}
         </div>
         <div className="flex flex-col gap-2">
-          <div className="flex gap-2">
-            <Button 
-              className="gap-2 bg-gradient-violet border-0 hover:opacity-90"
-              onClick={() => {/* TODO: Implémenter la création de projet */}}
-            >
-              <Plus className="w-4 h-4" />
-              Nouveau Projet
-            </Button>
-            <Button 
-              variant="outline" 
-              size="icon"
-              onClick={syncData}
-              disabled={isLoading || !spreadsheetId}
-            >
-              <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="icon"
-              onClick={() => setShowConfig(!showConfig)}
-            >
-              <Settings className="w-4 h-4" />
-            </Button>
-          </div>
-          <Button 
-            className="gap-2 bg-gradient-coral text-white border-0 hover:opacity-90"
-            onClick={() => setShowConfig(true)}
-          >
+          <Button className="gap-2 bg-gradient-violet border-0 hover:opacity-90">
+            <Plus className="w-4 h-4" />
+            Nouveau Projet
+          </Button>
+          <Button className="gap-2 bg-gradient-coral text-white border-0 hover:opacity-90">
             Configuration Google Sheets
           </Button>
         </div>
@@ -230,16 +159,6 @@ const Projets = () => {
           </div>
         </div>
       </Card>
-
-      {/* Configuration Google Sheets */}
-      {showConfig && (
-        <GoogleSheetsConfig 
-          onConfigChange={(id) => {
-            setSpreadsheetId(id);
-            setShowConfig(false);
-          }}
-        />
-      )}
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -1,5 +1,4 @@
 import { KpiCard } from "@/components/dashboard/KpiCard"
-import { DiscordChatBot } from "@/components/dashboard/DiscordChatBot"
 import DiscordChatbot from "@/components/DiscordChatbot"
 import { Card } from "@/components/ui/card"
 import { 
